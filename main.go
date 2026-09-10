@@ -97,6 +97,6 @@ func main() {
 	}
 
 	saferPort := strconv.Quote(port)
-	log.Println("Serving on port: %s\n", saferPort)
+	log.Printf("Serving on port: %s\n", saferPort)
 	log.Fatal(srv.ListenAndServe())
 }
