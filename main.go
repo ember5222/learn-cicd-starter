@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -89,10 +91,12 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + port,
-		Handler: router,
+		Addr:              ":" + port,
+		Handler:           router,
+		ReadHeaderTimeout: 2 * time.Second,
 	}
 
-	log.Printf("Serving on port: %s\n", port)
+	saferPort := strconv.Quote(port)
+	log.Printf("Serving on port: %s\n", saferPort)
 	log.Fatal(srv.ListenAndServe())
 }
