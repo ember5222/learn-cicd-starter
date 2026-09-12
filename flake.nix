@@ -18,6 +18,7 @@
             fish
             go
             podman
+            google-cloud-sdk
           ];
           # The exec command replaces the currently running process with the command specified.
           # Add export of go installed binary. This fix issue of unknown binaries call of packages wich installed through go install
